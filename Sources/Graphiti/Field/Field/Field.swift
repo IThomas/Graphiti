@@ -1,6 +1,10 @@
 import GraphQL
 import Runtime
 
+public protocol FieldKeyProvider {
+    associatedtype FieldKey : RawRepresentable where FieldKey.RawValue == String
+}
+
 public class Field<ObjectType, Context, FieldType, Arguments : Decodable> : FieldComponent<ObjectType, Context> {
     let name: String
     let arguments: [ArgumentComponent<Arguments>]
